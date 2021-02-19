@@ -23,6 +23,7 @@ library(ggwordcloud)
 hp_text <- pdf_text("harry_potter_and_the_sorcerers_JKrowling.pdf")
 ```
 
+## Part 1: Text Analysis
 ```{r}
 # Make the text tidy
 hp_tidy <- data.frame(hp_text) %>% 
@@ -51,7 +52,7 @@ hp_tokens <- hp_df %>%
 
 # Get word counts
 hp_wordcount <- hp_tokens %>% 
-  count(ch, word)
+  count(no, word)
 ```
 
 ```{r}
@@ -61,7 +62,74 @@ hp_nonstop_words <- hp_tokens %>%
 
 # Get counts again
 hp_nonstop_counts <- hp_nonstop_words %>% 
-  count(ch, word)
+  count(no, word)
 ```
+
+```{r}
+# Find the top 5 words from each chapter
+hp_top5_words <- hp_nonstop_counts %>% 
+  group_by(no) %>% 
+  arrange(-n) %>% 
+  slice(1:5)
+
+ggplot(data = hp_top5_words, aes(x = word, y = n)) +
+  geom_col(fill = "maroon") +
+  facet_wrap(~no, scales = "free") +
+  coord_flip()
+```
+
+```{r}
+# Make a word cloud for ch. 7 (ie. the chapter where Harry get's sorted into Gryffindor)
+ch7_top100 <- hp_nonstop_counts %>% 
+  filter(no == "SEVEN") %>% 
+  arrange(-n) %>% 
+  slice(1:100)
+```
+
+```{r}
+ch7_cloud <- ggplot(data = ch7_top100, aes(label = word)) +
+  geom_text_wordcloud(aes(color = n, size = n), shape = "diamond") +
+  scale_size_area(max_size = 6) +
+  scale_color_gradientn(colors = c("burlywood3", "goldenrod1","gold","maroon")) +
+  theme_minimal()
+
+ch7_cloud
+```
+
+## Part 2: Sentiment Analyis
+
+```{r}
+# get afinn lexicon
+get_sentiments(lexicon = "afinn")
+```
+
+```{r}
+# Bring hp test and afinn lexicon together
+hp_afinn <- hp_nonstop_words %>% 
+  inner_join(get_sentiments("afinn"))
+
+# Find counts based on snetiment rnaking from afinn lexicon
+hp_afinn_counts <- hp_afinn %>% 
+  count(no, value)
+
+# Find the mean afinn score by chapter
+hp_afinn_means <- hp_afinn %>% 
+  group_by(no) %>% 
+  summarize(mean_afinn = mean(value))
+```
+
+```{r}
+# Plot the hp afinn ranking (mean of each chapter)
+ggplot(data = hp_afinn_means,
+       aes(x = fct_rev(as.factor(no)),
+           y = mean_afinn)) +
+  geom_col() +
+  coord_flip()
+```
+
+
+
+
+
 
 

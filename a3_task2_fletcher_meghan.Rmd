@@ -10,7 +10,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 
-
 library(raster)
 library(tidyverse)
 library(here)
@@ -18,3 +17,12 @@ library(sf)
 library(fasterize)
 ```
 
+```{r}
+# Read in the data
+cetaceans_file <- list.files(path = here("ca_cetaceans"),
+                             pattern = ".tif",
+                             full.names = TRUE)
+
+cetaceans_stack <- raster::stack(cetaceans_file)
+plot(cetaceans_stack)
+```
