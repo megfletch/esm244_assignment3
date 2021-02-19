@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BookAuthorization xmlns="http://www.daisy.org/DRM/2005/BookAuthorization" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:odrld="http://odrl.net/1.1/ODRL-DD" xmlns:odrlx="http://odrl.net/1.1/ODRL-EX" xmlns:xe="http://www.w3.org/2001/04/xmlenc#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.daisy.org/DRM/2005/BookAuthorization AuthObj.xsd">
+  <Issuer uid="archive.org">Internet_Archive</Issuer>
+  <Book uid="harrypotterorder0000rowl_s1p4"/>
+  <odrlx:rights>
+    <odrlx:agreement>
+      <odrlx:asset>
+        <odrlx:context>
+          <odrld:uid>harrypotterorder0000rowl_s1p4</odrld:uid>
+        </odrlx:context>
+      </odrlx:asset>
+      <odrlx:permission>
+        <odrlx:play/>
+      </odrlx:permission>
+    </odrlx:agreement>
+  </odrlx:rights>
+  <Keys>
+    <ds:KeyInfo>
+      <ds:KeyName>DAISY.us-nls.ntwk-1</ds:KeyName>
+    </ds:KeyInfo>
+    <ContentKey media="text">
+      <xe:EncryptedKey>
+        <xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5"/>
+        <xe:CipherData>
+          <xe:CipherValue>os8rcqLynjUPAVq5YBsSQq5jk5qQR90e+UwAGQh2Zm/aIH8VYIvrutE9Q+QodReY
+MWFCm17OsdRtq/SGKsme4wcpzUzCcaUkqujb7hrphWLB8UURlgHWvRHEtFlIQHnQ
+O6BlLO3fhwYhJnuGrstgCaZrjno2EGOT+613iR4NZPg=</xe:CipherValue>
+        </xe:CipherData>
+        <xe:CarriedKeyName>aeskey</xe:CarriedKeyName>
+      </xe:EncryptedKey>
+    </ContentKey>
+    <EncryptedRights>
+      <xe:EncryptedKey>
+        <xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5"/>
+        <xe:CipherData>
+          <xe:CipherValue>T7QDLpxt4NtM9x0fDPNQj1ZOfqA2xQI2So+kQVMT9xw4Za30+mNmNC/0hVGpdrmr
+X3gDzqkHS7rBKj9uWR1roSeagyJKU+2Gj73et5E4dYMbA16F4wWzVZRUxQvcXsfU
+LyeAPQQGDF79YJJVkJenQ9S0+SHJ48rWJx0lagaMR8A=</xe:CipherValue>
+        </xe:CipherData>
+      </xe:EncryptedKey>
+      <xe:EncryptedData Type="http://www.w3.org/2001/04/xmlenc#Element">
+        <xe:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc"/>
+        <xe:CipherData>
+          <xe:CipherValue>eJGyj2L0JBFJ44f0vACW7l+viZ1+G6Sp8MQx5qMyXx+nHEMiolmijsYKzg8ey6Ns
+txw/nYuBIHNh6Hil3MfbjVlDrMN1tgLc/pa1miEbeHsstkP0gG79YPKfVyRwYYVC
+rFSUnk73GCTzA4RddBheqO5OwWzv24x0DCeYmAih+uslKMNJfwxrudVumeSi42KG
+aEUu3PefuxBc7BX/54ceWJANouAEl+5EarvbY/WkxhSOEclIDv71XZbx/+CnRUwf
+e5iFzsMR+F2IS8hTypaR4h5I4BArgMT/ewtWNwoaJOKG+r4TPt1h0NhT/wukD/MR
+sUpkp08obfB6LgigA4JyAkNb4KUnFBoOPWyY6hyU1aukXn50f9hICOD+am0g4cVb
+0fReSp4osnHCvhLvtx9cU1YqeeyXiKv19mFlsv7Br/RBTUSHocZYh5I5r4XBb8U1</xe:CipherValue>
+        </xe:CipherData>
+      </xe:EncryptedData>
+    </EncryptedRights>
+  </Keys>
+</BookAuthorization>

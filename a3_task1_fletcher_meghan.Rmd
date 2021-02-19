@@ -1,0 +1,70 @@
+---
+title: 'ESM 244 Assignment 3: Task 1'
+author: "Meghan Fletcher"
+date: "2/18/2021"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(tidyverse)
+library(here)
+library(janitor)
+library(sf)
+library(tmap)
+library(gstat)
+library(stars)
+```
+
+#### **Overview:** The maps within this report reveal the number of oilspill incident across California. Oil spill data was utilized from: https://map.dfg.ca.gov/metadata/ds0394.html
+
+
+```{r}
+# Read in the oil spill and CA shapefiles
+ca_oil <- read_sf(here("ds394"), layer = "ds394") %>% 
+  clean_names()
+
+st_crs(ca_oil)
+
+ca_counties <- read_sf(here("ca_counties"), layer = "CA_Counties_TIGER2016") %>% 
+  clean_names() %>% 
+  select(name)
+
+st_crs(ca_counties)
+
+# Make sure the coordinates of the data sets match
+ca_coutnies <- st_transform(ca_counties, st_crs(ca_oil))
+st_crs(ca_counties)
+```
+
+```{r}
+# Make exploratoy map to show where the CA oil spills have been
+ggplot() +
+  geom_sf(data = ca_counties, fill = "wheat") +
+  geom_sf(data = ca_oil, 
+          color = "deepskyblue4",
+          alpha = 0.3,
+          size = 1.2) +
+  theme_minimal() +
+  labs(x = "Latitude",y = "Longitude", title = "Oil Spill Incidents in California")
+```
+
+```{r}
+tmap_mode("view")
+
+tm_shape(ca_oil) +
+  tm_dots()
+```
+
+
+
+
+
+
+
+
+
+

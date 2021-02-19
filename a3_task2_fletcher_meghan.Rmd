@@ -1,0 +1,20 @@
+---
+title: 'ESM 244 Assignment 3: Task 2'
+author: "Meghan Fletcher"
+date: "2/19/2021"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+
+library(raster)
+library(tidyverse)
+library(here)
+library(sf)
+library(fasterize)
+```
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE package PUBLIC "+//ISBN 0-9673008-1-9//DTD OEB 1.2 Package//EN" "http://openebook.org/dtds/oeb-1.2/oebpkg12.dtd">
+<package unique-identifier="bookid" xmlns="http://openebook.org/namespaces/oeb-package/1.0/">
+  <metadata>
+    <dc-metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <dc:Format>ANSI/NISO Z39.86-2005</dc:Format>
+      <dc:Identifier id="bookid">harrypotterorder0000rowl_s1p4</dc:Identifier>
+      <dc:Contributor>Internet Archive</dc:Contributor>
+      <dc:Creator>Rowling, J. K</dc:Creator>
+      <dc:Date>2003</dc:Date>
+      <dc:Description>xi, 870 p. : 24 cm</dc:Description>
+      <dc:Description>When the government of the magic world and authorities at Hogwarts School of Witchcraft and Wizardry refuse to believe in the growing threat of a freshly revived Lord Voldemort, fifteen-year-old Harry Potter finds support from his loyal friends in facing the evil wizard and other new terrors</dc:Description>
+      <dc:Description>&quot;Year 5&quot;--Spine</dc:Description>
+      <dc:Description>Sequel to: Harry Potter and the goblet of fire</dc:Description>
+      <dc:Description>Sequel: Harry Potter and the half-blood prince</dc:Description>
+      <dc:Language>en</dc:Language>
+      <dc:Publisher>New York, NY : Arthur A. Levine Books</dc:Publisher>
+      <dc:Subject>Wizards -- Fiction</dc:Subject>
+      <dc:Subject>Magic -- Fiction</dc:Subject>
+      <dc:Subject>Schools -- Fiction</dc:Subject>
+      <dc:Subject>Coming of age -- Fiction</dc:Subject>
+      <dc:Subject>England -- Fiction</dc:Subject>
+      <dc:Title>Harry Potter and the Order of the Phoenix</dc:Title>
+    </dc-metadata>
+    <x-metadata>
+      <meta name="dtb:multimediaType" content="textNCX"/>
+      <meta name="dtb:multimediaContent" content="text"/>
+      <meta name="dtb:totalTime" content="0"/>
+    </x-metadata>
+  </metadata>
+  <manifest>
+    <item href="book.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>
+    <item href="./book.ao" id="ao" media-type="application/x-pdtbauth+xml"/>
+    <item href="harrypotterorder0000rowl_s1p4_daisy.xml" id="xml" media-type="application/x-pdtbook+xml"/>
+    <item href="harrypotterorder0000rowl_s1p4_daisy.smil" id="smil" media-type="application/smil"/>
+    <item href="daisyTransform.xsl" id="daisyTransform" media-type="text/xsl"/>
+    <item href="daisy.css" id="daisyCss" media-type="text/css"/>
+    <item href="html.css" id="htmlCss" media-type="text/css"/>
+    <item href="resource.res" id="resource" media-type="application/x-dtbresource+xml"/>
+    <item href="facade.ncx" id="facade-ncx" media-type="application/x-dtbncx+xml"/>
+    <item href="./package.opf" id="opf" media-type="text/xml"/>
+    <item href="./smilFile1.smil" id="smil" media-type="application/smil"/>
+    <item href="./facade.xml" id="xml" media-type="application/x-dtbook+xml"/>
+  </manifest>
+  <spine>
+    <itemref idref="smil"/>
+  </spine>
+</package>

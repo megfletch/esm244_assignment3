@@ -1,0 +1,67 @@
+---
+title: 'ESM 244 Assignment 3: Task 3'
+author: "Meghan Fletcher"
+date: "2/19/2021"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+library(tidyverse)
+library(here)
+library(tidytext)
+library(textdata)
+library(pdftools)
+library(ggwordcloud)
+```
+
+```{r}
+# Read in Harry Potter and the Sorcer's Stone
+hp_text <- pdf_text("harry_potter_and_the_sorcerers_JKrowling.pdf")
+```
+
+```{r}
+# Make the text tidy
+hp_tidy <- data.frame(hp_text) %>% 
+  mutate(text_full = str_split(hp_text, pattern ="\\n")) %>% 
+  unnest(text_full) %>% 
+  mutate(text_full = str_trim(text_full))
+```
+
+```{r}
+# Make it even tidier!
+hp_df <- hp_tidy %>% 
+  slice(-(1:44)) %>% 
+    mutate(chapter = case_when(
+    str_detect(text_full, pattern = "CHAPTER") ~ text_full,
+    TRUE ~ NA_character_
+  )) %>% 
+  fill(chapter) %>% 
+  separate(col = chapter, into = c("ch", "no"), sep = " ") 
+```
+
+```{r}
+# Get tokens of the text
+hp_tokens <- hp_df %>% 
+  unnest_tokens(word, text_full) %>% 
+  dplyr::select(-hp_text) 
+
+# Get word counts
+hp_wordcount <- hp_tokens %>% 
+  count(ch, word)
+```
+
+```{r}
+# Remove all stop words
+hp_nonstop_words <- hp_tokens %>% 
+  anti_join(stop_words)
+
+# Get counts again
+hp_nonstop_counts <- hp_nonstop_words %>% 
+  count(ch, word)
+```
+
+
