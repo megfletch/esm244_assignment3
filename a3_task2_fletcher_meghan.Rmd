@@ -15,7 +15,9 @@ library(tidyverse)
 library(here)
 library(sf)
 library(fasterize)
+library(rnaturalearth)
 ```
+
 
 ```{r}
 # Read in the data
@@ -26,3 +28,73 @@ cetaceans_file <- list.files(path = here("ca_cetaceans"),
 cetaceans_stack <- raster::stack(cetaceans_file)
 plot(cetaceans_stack)
 ```
+
+```{r}
+cetaceans_raster <- raster(cetaceans_stack)
+cetaceans_raster
+
+plot(cetaceans_raster)
+```
+
+
+
+```{r}
+is_cetaceans <- function(x, thresh = .6) {
+  y <- ifelse(x >= thresh, 1, 0)
+  return(y)
+}
+
+cetaceans <- calc(cetaceans_stack, fun = is_cetaceans)
+plot(cetaceans)
+```
+
+```{r}
+cetaceans_stack_df <- raster::rasterToPoints(cetaceans_stack) %>% 
+  as.data.frame() %>% 
+  mutate_all(~replace(.,is.na(.), 0))
+
+ca_cetaceans_df <- raster::rasterToPoints(cetaceans) %>% 
+  as.data.frame() %>% 
+  mutate_all(~replace(.,is.na(.), 0))
+```
+
+
+```{r}
+# bring in coastline form rnatural earth package
+ca_coastline <- ne_download(scale = 110, type = 'land', category = 'physical', returnclass = "sf")
+```
+
+
+
+```{r}
+ggplot(data = cetaceans_stack_df, aes(x = x, y = y)) +
+  geom_raster() +
+  geom_raster(data = ca_cetaceans_df, fill = 'deepskyblue') +
+  coord_sf(expand = 0) +
+  scale_fill_gradient(low = 'black', high = 'white') +
+  theme_void() +
+  theme(panel.backgroun = element_rect(fill = 'lightgreen'))
+```
+
+```{r}
+ggplot() +
+  geom_sf(layer = ca_coastline) 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
