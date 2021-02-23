@@ -119,7 +119,7 @@ ch7_cloud <- ggplot(data = ch7_top100, aes(label = word)) +
   geom_text_wordcloud(aes(color = n, size = n), shape = "diamond") +
   scale_size_area(max_size = 6) +
   scale_color_gradientn(colors = c("burlywood3", "goldenrod1","gold","maroon")) +
-  theme_minimal() +
+  theme_dark() +
   labs(title = "Word Cloud for Chapter 7", subtitle = "Text: Harry Potter and the Sorcerer's Stone")
 
 ch7_cloud
